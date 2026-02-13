@@ -1,0 +1,498 @@
+/* ===== ОСНОВНЫЕ СТИЛИ ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #ffb6c1 0%, #ff69b4 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* ===== ПЛАВАЮЩИЕ СЕРДЕЧКИ ===== */
+.floating-hearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.heart {
+    position: absolute;
+    font-size: 24px;
+    opacity: 0.6;
+    animation: float 6s ease-in-out infinite;
+    color: rgba(255, 255, 255, 0.8);
+    user-select: none;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-30px) rotate(10deg); }
+}
+
+/* ===== МОДАЛЬНОЕ ОКНО С ВОПРОСОМ ===== */
+.question-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.question-modal.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.question-card {
+    background: linear-gradient(135deg, #fff5f8, #ffe4f0);
+    border-radius: 50px;
+    padding: 50px;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 30px 60px rgba(255, 20, 147, 0.4),
+                0 0 0 5px #ffffff,
+                0 0 0 10px #ff69b4;
+    animation: popIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.3); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.heart-decoration {
+    font-size: 80px;
+    line-height: 1;
+    margin-bottom: 20px;
+    animation: heartbeat 1s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    25% { transform: scale(1.1); }
+    50% { transform: scale(1); }
+    75% { transform: scale(1.1); }
+}
+
+.question-card h2 {
+    font-size: 2.5em;
+    color: #ff1493;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 0 #ffffff;
+}
+
+.question-card p {
+    font-size: 1.3em;
+    color: #c71585;
+    margin-bottom: 35px;
+    line-height: 1.6;
+}
+
+.buttons-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    position: relative;
+    min-height: 60px;
+}
+
+.answer-btn {
+    padding: 15px 40px;
+    font-size: 1.4em;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 10;
+}
+
+.yes-btn {
+    background: #ff1493;
+    color: white;
+    border: 3px solid #ffffff;
+}
+
+.yes-btn:hover {
+    background: #ff69b4;
+    transform: scale(1.1);
+    box-shadow: 0 10px 25px rgba(255, 20, 147, 0.5);
+}
+
+.no-btn {
+    background: #d3d3d3;
+    color: #666;
+    border: 3px solid #ffffff;
+    position: relative;
+}
+
+/* ===== КОНФЕТТИ ===== */
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background: #ff1493;
+    top: -10px;
+    opacity: 0.8;
+    animation: confettiFall linear forwards;
+    z-index: 2000;
+    pointer-events: none;
+}
+
+@keyframes confettiFall {
+    to { transform: translateY(100vh) rotate(720deg); }
+}
+
+/* ===== ВАЛЕНТИНКА ===== */
+.valentine-card {
+    width: 700px;
+    height: 600px;
+    position: relative;
+    perspective: 1500px;
+    cursor: pointer;
+    z-index: 100;
+}
+
+/* Обложка */
+.card-cover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url(/b4f2a15221283fad54ed323ed8dd0b3d.jpg);
+    border-radius: 30px;
+    box-shadow: 0 20px 40px rgba(255, 20, 147, 0.4),
+                0 0 0 5px #ffffff,
+                0 0 0 10px #ff69b4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    z-index: 2;
+}
+
+.card-cover:hover {
+    transform: scale(1.02);
+    box-shadow: 0 25px 50px rgba(255, 20, 147, 0.6),
+                0 0 0 5px #ffffff,
+                0 0 0 10px #ff1493;
+}
+
+.valentine-card.open .card-cover {
+    transform: rotateY(-180deg);
+    pointer-events: none;
+}
+
+.cover-content {
+    color: white;
+    padding: 20px;
+}
+
+.big-heart {
+    font-size: 100px;
+    animation: heartbeat 1s ease-in-out infinite;
+    margin-bottom: 20px;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.cover-content h2 {
+    font-size: 2.5em;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 0 #ff1493;
+}
+
+.cover-content p {
+    font-size: 1.3em;
+    margin-bottom: 25px;
+    opacity: 0.9;
+}
+
+.small-hearts {
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.small-hearts span {
+    animation: float 3s ease-in-out infinite;
+    display: inline-block;
+}
+
+.small-hearts span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.small-hearts span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+/* Внутренняя часть */
+.card-inside {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #fff9fc, #fff0f5);
+    border-radius: 30px;
+    box-shadow: 0 20px 40px rgba(255, 105, 180, 0.3),
+                0 0 0 5px #ffffff,
+                0 0 0 10px #ff69b4;
+    padding: 30px;
+    transform: rotateY(180deg);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    overflow-y: auto;
+}
+
+.valentine-card.open .card-inside {
+    transform: rotateY(0deg);
+}
+
+.close-card {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 35px;
+    color: #ff1493;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s;
+    z-index: 10;
+}
+
+.close-card:hover {
+    background: #ffe4f0;
+    transform: scale(1.1);
+}
+
+.inside-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+/* Секция с текстом */
+.message-section {
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.2);
+}
+
+.message-section h3 {
+    color: #ff1493;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 2px solid #ffb6c1;
+    padding-bottom: 10px;
+}
+
+.message-text {
+    background: #fff0f5;
+    border-radius: 15px;
+    padding: 25px;
+    line-height: 1.8;
+}
+
+.message-text p {
+    color: #c71585;
+    font-size: 1.2em;
+    margin-bottom: 15px;
+}
+
+.message-text .signature {
+    text-align: right;
+    font-style: italic;
+    margin-top: 20px;
+    font-size: 1.3em;
+}
+
+/* Секция с видео */
+.video-section {
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.2);
+}
+
+.video-section h3 {
+    color: #ff1493;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 2px solid #ffb6c1;
+    padding-bottom: 10px;
+}
+
+.video-container {
+    background: #000;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    aspect-ratio: 16/9;
+    border: 3px solid #ff69b4;
+}
+
+.video-container video,
+.video-container iframe {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.video-caption {
+    text-align: center;
+    color: #a0529a;
+    font-size: 1.1em;
+    font-style: italic;
+}
+
+/* Кнопка музыки */
+.music-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #ff1493;
+    color: white;
+    border: 3px solid white;
+    font-size: 30px;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(255, 20, 147, 0.5);
+    transition: all 0.3s;
+    z-index: 300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.music-btn:hover {
+    transform: scale(1.1);
+    background: #ff69b4;
+}
+
+.music-btn.playing {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* ===== УВЕДОМЛЕНИЯ ===== */
+.notification {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ff1493;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 50px;
+    box-shadow: 0 5px 20px rgba(255,20,147,0.5);
+    z-index: 4000;
+    font-size: 1.1em;
+    border: 2px solid white;
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 20px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        transform: translate(-50%, 20px);
+    }
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+@media (max-width: 750px) {
+    .valentine-card {
+        width: 350px;
+        height: 600px;
+    }
+    
+    .cover-content h2 {
+        font-size: 1.8em;
+    }
+    
+    .big-heart {
+        font-size: 70px;
+    }
+    
+    .message-text p {
+        font-size: 1em;
+    }
+    
+    .question-card {
+        padding: 30px 20px;
+    }
+    
+    .question-card h2 {
+        font-size: 2em;
+    }
+    
+    .buttons-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .answer-btn {
+        width: 200px;
+    }
+    
+    .music-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 25px;
+    }
+}

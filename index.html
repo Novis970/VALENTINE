@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💝 Валентинка для тебя</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Плавающие сердечки -->
+    <div class="floating-hearts" id="floatingHearts"></div>
+
+    <!-- Модальное окно с вопросом -->
+    <div class="question-modal" id="questionModal">
+        <div class="question-card">
+            <div class="heart-decoration">❤️</div>
+            <h2>Тварь!</h2>
+            <p>Скажи честно,ты воняешь?</p>
+            <div class="buttons-container" id="buttonContainer">
+                <button class="answer-btn yes-btn" onclick="answerYes()">ДА! 💖</button>
+                <button class="answer-btn no-btn" id="noBtn" onmouseover="moveNoButton()" onclick="return false;">Нет 😢</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Валентинка -->
+    <div class="valentine-card" id="valentineCard">
+        <!-- Обложка -->
+        <div class="card-cover" onclick="openValentine()">
+            <div class="cover-content">
+                <div class="big-heart">❤️</div>
+                <h2>С Днём Расстрела Чикатило!</h2>
+                <p>Нажми, чтобы открыть</p>
+                <div class="small-hearts">
+                    <span>❤️</span>
+                    <span>💖</span>
+                    <span>💝</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Внутренняя часть -->
+        <div class="card-inside">
+            <button class="close-card" onclick="closeValentine()">×</button>
+            
+            <div class="inside-content">
+                <!-- Здесь ВЫ вставляете свой текст -->
+                <div class="message-section">
+                    <h3>💌 Мои слова для тебя</h3>
+                    <div class="message-text">
+                        <!-- ЗДЕСЬ ВСТАВЬТЕ СВОЙ ТЕКСТ -->
+                        <p>Софийко!</p>
+                        <p>С днем расстрела Чикатило тебя,спасибо тебе огромное за твое появление в моей жизни ты очень крутая чувиха,ходи в ванную почаще пж</p>
+                        <p>Я хочу пожелать тебе поскорее помыться и перестать вонять,ну а если серьезно люплю тебя сука 🫂</p>
+                        <p class="signature">Степан Великий</p>
+                    </div>
+                </div>
+
+                <!-- Здесь ВЫ вставляете своё видео -->
+                <div class="video-section">
+                    <h3>🎬 Видео для тебя</h3>
+                    <div class="video-container">
+                        <!-- ЗДЕСЬ ВСТАВЬТЕ СВОЁ ВИДЕО -->
+                        <!-- Вариант 1: Видео из папки -->
+                        <video controls playsinline>
+                            <source src="/11166759520922.mp4" type="video/mp4">
+                            Твой браузер не поддерживает видео
+                        </video>
+                        
+                        <!-- Вариант 2: Видео с YouTube (раскомментируйте если нужно) -->
+                        <!--
+                        <iframe src="https://www.youtube.com/embed/VIDEO_ID" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                        </iframe>
+                        -->
+                    </div>
+                    <p class="video-caption">Посмотри это видео, оно для тебя 💕</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Музыка (опционально) -->
+    <audio id="backgroundMusic" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+    <button class="music-btn" onclick="toggleMusic()">🎵</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
